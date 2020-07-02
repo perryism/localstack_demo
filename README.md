@@ -1,5 +1,10 @@
 # Localstack
 
+## Requirements
+
+1. Run localstack
+1. Install awslocal
+
 ## S3
 
 <pre>
