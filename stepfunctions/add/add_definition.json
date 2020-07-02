@@ -1,0 +1,32 @@
+{
+  "Comment": "A Hello World example of the Amazon States Language using Pass states",
+  "StartAt": "Add",
+  "States": {
+    "Add": {
+      "Parameters": {
+        "x.$": "$.x",
+        "y.$": "$.y"
+      },
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-east-1:000000000000:function:add",
+      "Next": "Decision"
+    },
+    "Decision": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.result",
+          "NumericEquals": 10,
+          "Next": "Hello"
+        }
+      ],
+      "Default": "World"
+    },
+    "Hello": {
+      "Type": "Fail"
+    },
+    "World": {
+      "Type": "Succeed"
+    }
+  }
+}
